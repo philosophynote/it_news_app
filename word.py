@@ -1,13 +1,12 @@
 import tweepy
 import re
 import plotly.express as px
-from wordcloud import WordCloud
 import pandas as pd
 from janome.tokenizer import Tokenizer
 from collections import Counter
 import key
 import streamlit as st
-from PIL import Image
+
 
 def word_count():
     auth = tweepy.OAuthHandler(key.CK, key.CS)
@@ -114,20 +113,22 @@ def news_express(news_list):
         , "提携", "国立", "モデル", "社長", "通信", "販売"
         , "事業", "操作", "入門", "by", "規模", "実力", "国内"
         , "実績", "停止", "ツール", "原因", "設計", "狙い"
-        , "前", "実力", "アプリ", "新型"]
+        , "前", "実力", "アプリ", "新型", ":", "～", "~"]
     new_word_list = [word for word in word_list if word not in stop_words]
-    words_wakati = " ".join(new_word_list)
-    wordcloud = WordCloud(
-        font_path='./.fonts/Osaka.TTC',
-        width=900, height=600,  # default width=400, height=200
-        background_color="white",  # default=”black”
-        max_words=500,  # default=200
-        min_font_size=4,  # default=4
-        collocations=False  # default = True
-    ).generate(words_wakati)
-    wordcloud.to_file("wordcloud2.png")
-    image = Image.open("wordcloud2.png")
-    st.image(image, caption='Word Cloud')
+    # words_wakati = " ".join(new_word_list)
+    # wordcloud = WordCloud(
+    #     font_path=path.join(getcwd(), ".fonts/Osaka.TTC"),
+    #     # font_path='./.fonts/Osaka.TTC',
+    #     width=900, height=600,  # default width=400, height=200
+    #     background_color="white",  # default=”black”
+    #     max_words=500,  # default=200
+    #     min_font_size=4,  # default=4
+    #     collocations=False  # default = True
+    # ).generate(words_wakati)
+    # image = wordcloud.to_image()
+    # image.save(f"/tmp/wordcloud2.png", format="png", optimize=True)
+    # image = Image.open("/tmp/wordcloud2.png")
+    # st.image(image, caption='Word Cloud')
     counter = Counter(new_word_list)
     for word, count in counter.most_common():
         word_df = word_df.append({
