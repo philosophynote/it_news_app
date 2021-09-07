@@ -1,0 +1,11 @@
+bs4
+datetime
+python-dotenv==0.10.1
+google-cloud-texttospeech
+janome
+pandas
+plotly
+requests
+streamlit
+tweepy
+wordcloud
