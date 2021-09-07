@@ -7,3 +7,4 @@ requests
 streamlit
 tweepy
 wordcloud
+janome
