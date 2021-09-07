@@ -2,15 +2,12 @@ import pandas as pd
 import streamlit as st
 import warnings
 import tweepy
-from gts import CachedSpeak
 from datetime import timedelta
 import requests
-from bs4 import BeautifulSoup
-from urllib.request import urlopen
 from multiapps import MultiApp
 import key
 from word import word_express
-from cluster import clustering
+
 
 warnings.filterwarnings('ignore')
 app = MultiApp()
@@ -41,30 +38,6 @@ newsapi_list = list(newsapi_dic.keys())
 # 取得したいユーザーのユーザーIDを代入
 def get_tweet():
     st.title("IT News")
-    url = st.text_input(label='読み上げたいニュースのURLを入力してください(TechCrunchJapanのみ)')
-    audio = st.button('読み込み')
-    if audio:
-        try:
-            html = urlopen(url)
-        except HTTPError as e:
-            # エラーの場合の処理
-            st.error(e)
-            pass
-        except URLError as e:
-            # エラーの場合の処理
-            st.error("URLに接続するが処理できない")
-            pass
-        except Exception as e2:
-            st.error(e2)
-            pass
-        else:
-            bs = BeautifulSoup(html.read(), 'html.parser')
-            for p in bs.find_all("p"):
-                for tag in p.stripped_strings:
-                    tag_list.append(tag)
-                    texts = ''.join(tag_list)
-            context_data = CachedSpeak.speak(texts, replace=True, language_code="ja-JP", name="ja-JP-Standard-D")
-            st.audio(context_data)
     tweet_form = st.form(key="get-form")
     choice = tweet_form.selectbox("アカウント検索かキーワード検索か選んでください",["アカウント検索","キーワード検索"])
     select_account = tweet_form.selectbox("好きなアカウントを選んでください", account)
@@ -183,5 +156,5 @@ def news_search():
 app.add_app("ツイート表示", get_tweet)
 app.add_app("ニュース表示", news_search)
 app.add_app("頻出単語調査", word_express)
-# app.add_app("分析", clustering)
+
 app.run()
