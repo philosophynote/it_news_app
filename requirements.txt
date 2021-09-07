@@ -4,7 +4,7 @@ python-dotenv==0.10.1
 pandas
 plotly
 requests
-streamlit==0.86.0
+streamlit==0.82.0
 tweepy
 wordcloud
 janome
