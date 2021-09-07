@@ -183,5 +183,5 @@ def news_search():
 app.add_app("ツイート表示", get_tweet)
 app.add_app("ニュース表示", news_search)
 app.add_app("頻出単語調査", word_express)
-app.add_app("分析", clustering)
+# app.add_app("分析", clustering)
 app.run()
