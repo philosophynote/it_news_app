@@ -1,16 +1,17 @@
 import os.path
 from dotenv import load_dotenv
+import streamlit as st
 
 
 # dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv()
 
-CK = os.getenv("API_KEY")
-CS = os.getenv("API_SECRET")
-AK = os.getenv("ACCESS_TOKEN")
-AS = os.getenv("ACCESS_TOKEN_SECRET")
+CK = st.secrets("API_KEY")
+CS = st.secrets("API_SECRET")
+AK = st.secrets("ACCESS_TOKEN")
+AS = st.secrets("ACCESS_TOKEN_SECRET")
 
-NW = os.getenv("NEWS_KEY")
+NW = st.secrets("NEWS_KEY")
 
 # CK = 'IM6rY9ffWSKfl36MhVsgRc6vI'
 # CS= 'Hz6PKwWRUvhUNNXJ7X4K2rmvRYGesSRt4OGyn0HOJCyyRANZeB'
