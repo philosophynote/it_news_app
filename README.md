@@ -2,14 +2,15 @@
 - ITニュースを表示するサイトです。
 - APIを活用してTwitterなどからITニュースを自動収集・表示してくれます。
 - 自然言語処理を活用することでニュースのキーワードの数がわかります。
+<img width="1635" alt="スクリーンショット 2021-09-13 14 39 36" src="https://user-images.githubusercontent.com/78991083/133029672-cb956571-10b1-432c-9c4b-a701fd2b630f.png">
 
 # 使用技術
-- Python 3.8.8
+- Python 3.8.8(主な使用ライブラリ：streamlit,pandas,janome,plotly)
 - Twitter API
 - News API
-- 自然言語処理(janome)
+- 自然言語処理
 
-# 機能一蘭
+# 機能一覧
 - 次のTwitterのアカウントのツイートを表示
   - TechCrunchJapan(@jptechcrunch)
   - Info_AI(@InfoAI4)
