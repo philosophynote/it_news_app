@@ -7,6 +7,7 @@ import requests
 from multiapps import MultiApp
 import key
 from word import word_express
+from cluster import clustering
 
 
 warnings.filterwarnings('ignore')
@@ -156,5 +157,5 @@ def news_search():
 app.add_app("ツイート表示", get_tweet)
 app.add_app("ニュース表示", news_search)
 app.add_app("頻出単語調査", word_express)
-
+app.add_app("ベクトル", clustering)
 app.run()
